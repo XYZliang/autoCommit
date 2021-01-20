@@ -1,0 +1,116 @@
+{
+  "name": "autoCommit",
+  "displayName": "Auto Commit",
+  "description": "自动提交commit到github",
+  "publisher": "OBKoro1",
+  "version": "1.0.8",
+  "scripts": {
+    "build": "vsce package",
+    "vscode:prepublish": "webpack --mode production",
+    "compile": "webpack --mode none",
+    "watch": "webpack --mode none --watch",
+    "pretest": "npm run compile",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "yarn run compile && node ./node_modules/vscode/bin/test",
+    "lint": "eslint --ext .ts,.vue src --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,vue}": [
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "homepage": "https://github.com/OBKoro1/autoCommit",
+  "license": "MIT",
+  "author": {
+    "name": "OBKoro1",
+    "email": "obkoro1@foxmail.com",
+    "url": "http://obkoro1.com/web_accumulate/"
+  },
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#3B4859",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OBKoro1/autoCommit"
+  },
+  "bugs": {
+    "url": "https://github.com/OBKoro1/koro1FileHeader/issues",
+    "email": "obkoro1@foxmail.com"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.autoCommit"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.autoCommit",
+        "title": "控制Github绿色格子的commit数量",
+        "category": "auto commit Github自动提交 "
+      }
+    ]
+  },
+  "engines": {
+    "vscode": "^1.41.0"
+  },
+  "keywords": [
+    "koroFileHeader",
+    "autoCommit",
+    "auto commit",
+    "autocommit",
+    "自动commit",
+    "vscode 自动commit",
+    "vscode github",
+    "vscode commit",
+    "github commit",
+    "github autoCommit",
+    "git commit",
+    "自动提交",
+    "git 自动提交",
+    "github 自动提交",
+    "git",
+    "github",
+    "commit",
+    "koro1",
+    "obkoro1",
+    "github 自动commit"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.41.0",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "copy-webpack-plugin": "^5.1.1",
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "glob": "^7.1.5",
+    "husky": "^4.3.6",
+    "mocha": "^6.2.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.9.7",
+    "vscode": "^1.1.36",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "eslint-plugin-import": "^2.22.1",
+    "lint-staged": "^10.5.3",
+    "moment": "^2.24.0"
+  }
+}
